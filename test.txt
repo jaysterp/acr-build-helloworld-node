@@ -1,1 +1,1 @@
-"test" 
+"testing multiple triggers" 
