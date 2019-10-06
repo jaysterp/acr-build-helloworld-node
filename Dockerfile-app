@@ -1,4 +1,4 @@
-FROM jeburkedfeastus.azurecr-test.io/baseimages/node:9-alpine
+FROM jeburketesteast.azurecr-test.io/baseimages/node:9-alpine
 
 COPY . /src
 RUN cd /src && npm install
