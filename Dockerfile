@@ -1,4 +1,7 @@
-ARG time
-FROM registry.centos.org/dotnet/dotnet-22-runtime-centos7
+FROM node:9-alpine
 
-CMD echo "test PR trigger"
+RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
+COPY . /src
+RUN cd /src && npm install
+EXPOSE 80
+CMD ["node", "/src/server.js"]
