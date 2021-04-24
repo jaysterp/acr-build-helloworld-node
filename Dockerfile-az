@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/azure-cli
+ARG MOBY_CLI_PACKAGE_URL="https://packages.microsoft.com/ubuntu/18.04/multiarch/prod/pool/main/m/moby-cli/moby-cli_3.0.13%2Bazure-0_amd64.deb"
+RUN apk add --no-cache \
+        dpkg
+RUN set -eux; \
+        wget -O moby-cli.deb ${MOBY_CLI_PACKAGE_URL}; \
+        touch /var/lib/dpkg/status; \
+        dpkg --force-all -i moby-cli.deb; \
+        rm -f moby-cli.deb
+CMD [ "--version" ]
+ENTRYPOINT [ "az" ]
